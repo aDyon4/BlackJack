@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alap.HelloController">
+   <children>
+      <StackPane prefHeight="150.0" prefWidth="200.0">
+         <children>
+            <Arc fill="#186f11" length="180.0" radiusX="500.0" radiusY="450.0" stroke="#654343" strokeType="INSIDE" type="ROUND" />
+            <ImageView fitHeight="183.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" translateY="-120.0">
+               <image>
+                  <Image url="@lapok/2H.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="183.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" translateY="120.0">
+               <image>
+                  <Image url="@lapok/8D.png" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+   </children>
+</VBox>
