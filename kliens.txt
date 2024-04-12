@@ -1,0 +1,70 @@
+package com.example.alap;
+
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+
+import java.io.IOException;
+import java.net.*;
+
+public class HelloController {
+
+    @FXML private TextField tfText;
+    @FXML private ListView<String> lvList;
+
+    DatagramSocket socket = null;
+
+    public void initialize(){
+        try {
+            socket = new DatagramSocket(678);
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
+        /*
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                fogad();
+            }
+        });
+        t.setDaemon(true);
+        t.start();
+        */
+    }
+
+    @FXML private void onClickPressed(){
+        String zseton = "join:20000";
+        kuld(zseton, "10.201.2.7", 678);
+    }
+
+    private void kuld(String zseton, String ip, int port) {
+        try {
+            byte[] adat = zseton.getBytes("utf-8");
+            InetAddress ipv4 = Inet4Address.getByName(ip);
+            DatagramPacket packet = new DatagramPacket(adat, adat.length, ipv4, port);
+            socket.send(packet);
+            System.out.printf("%s:%d -> %s\n", ip, port, zseton);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+/*
+    private void fogad() {
+        byte[] data = new byte[256];
+        DatagramPacket packet = new DatagramPacket(data, data.length);
+        while (true){
+            try {
+                socket.receive(packet);
+                String uzenet = new String(packet.getData(), 0, packet.getLength(), "utf-8");
+                Platform.runLater(() -> lvList.getItems().add(uzenet));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+   */
+
+}
